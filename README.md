@@ -6,7 +6,7 @@ The initial goal of this plugin architecture is to decouple OpenRelik from AI im
 
 Example plugin implementation ie. `ollama_llm_provider.py`:
 ```
-from llm_provider import LLMProvider
+from openrelik_plugins.interfaces import LLMProvider
 from ollama import Client
 
 class OllamaLLMProvider(LLMProvider):
