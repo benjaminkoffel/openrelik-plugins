@@ -15,7 +15,7 @@ class OllamaLLMProvider(LLMProvider):
         self.server_url = settings['server_url']
         self.model_name = settings['model_name']
 
-    def generate(self, prompt: str) -> str:
+    def generate(self, prompt: str, files: list[bytes]) -> str:
         client = Client(host=self.server_url)
         response = client.chat(
             model=self.model_name,
