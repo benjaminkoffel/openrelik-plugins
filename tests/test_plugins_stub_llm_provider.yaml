@@ -1,0 +1,7 @@
+plugins:
+  llm_provider:
+    default:
+      module: stub_llm_provider
+      name: StubLLMProvider
+      settings:
+        response: test

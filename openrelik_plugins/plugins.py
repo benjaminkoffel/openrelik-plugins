@@ -1,6 +1,7 @@
 from importlib import import_module
 from yaml import safe_load
 from .interfaces import LLMProvider
+from typing import Any
 
 
 def load_llm_provider(module: str, name: str, settings: dict[str, str]) -> type[LLMProvider]:
@@ -16,13 +17,14 @@ def load_llm_provider(module: str, name: str, settings: dict[str, str]) -> type[
 
 
 class Plugins:
-    """Load plugins and maintain pointers to instantiated objects."""
+    """Load plugins and maintain a pointer to instantiated objects."""
 
-    def __init__(self, path):
-        """Load and configure plugins defined in the config file."""
+    def __init__(self, path: str):
         with open(path, 'r') as r:
-            c = safe_load(r)
+            c = safe_load(r) or {}
+        p = c.get('plugins') or {}
+        l = p.get('llm_provider') or {}
         self.llm_providers: dict[str, type[LLMProvider]] = {
             k: load_llm_provider(v['module'], v['name'], v['settings'])
-            for k, v in c['plugins']['llm_provider'].items()
+            for k, v in l.items()
         }
