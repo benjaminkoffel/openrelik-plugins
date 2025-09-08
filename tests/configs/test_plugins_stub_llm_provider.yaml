@@ -4,4 +4,9 @@ plugins:
       module: tests.stubs.stub_llm_provider
       name: StubLLMProvider
       settings:
-        response: test
+        prefix: default
+    notdefault:
+      module: tests.stubs.stub_llm_provider
+      name: StubLLMProvider
+      settings:
+        prefix: notdefault

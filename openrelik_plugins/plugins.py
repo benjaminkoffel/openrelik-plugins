@@ -29,5 +29,5 @@ class Plugins:
             for k, v in l.items()
         }
 
-    def get_llm_provider(self, name: str) -> type[LLMProvider]:
-        return self.get_llm_providers.get(name, self.get_llm_providers.get('default'))
+    def get_llm_provider(self, name: str = None) -> type[LLMProvider]:
+        return self.llm_providers.get(name, self.llm_providers.get('default'))
