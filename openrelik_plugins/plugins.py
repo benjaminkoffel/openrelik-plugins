@@ -28,3 +28,6 @@ class Plugins:
             k: load_llm_provider(v['module'], v['name'], v['settings'])
             for k, v in l.items()
         }
+
+    def get_llm_provider(self, name: str) -> type[LLMProvider]:
+        return self.get_llm_providers.get(name, self.get_llm_providers.get('default'))
