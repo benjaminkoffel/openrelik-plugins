@@ -1,7 +1,6 @@
 from importlib import import_module
 from yaml import safe_load
 from .interfaces import LLMProvider
-from typing import Any
 
 
 def load_llm_provider(module: str, name: str, settings: dict[str, str]) -> type[LLMProvider]:
